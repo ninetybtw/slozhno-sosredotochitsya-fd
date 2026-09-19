@@ -9,6 +9,7 @@
     Так стили написанные ниже будут иметь больший вес,
     чем стили в медиазапросе предпочтений пользователя
   */
+<<<<<<< HEAD
   --bg-color: #000028;
   --bg-image: url('../images/cover-image-dark.png');
   --text-color: #f1b2ce;
@@ -17,3 +18,6 @@
   --text-on-accent-color: #000028;
   --hover-border-color: rgb(255 0 112 / 40%);
 }
+=======
+}
+>>>>>>> 1f25e5f563a551e995efc2b892365a04306b2090

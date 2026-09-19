@@ -1,0 +1,315 @@
+/*
+  Основные стили проекта. Мобильная раскладка тёмной темы —
+  ниже медиавыражения для планшета и десктопа.
+*/
+
+.page {
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--text-color);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+.title-decor {
+  background-color: var(--accent-color);
+  color: var(--text-on-accent-color);
+}
+
+.link {
+  text-shadow: 2px 2px 0 var(--accent-color);
+  text-decoration: line-through;
+}
+
+.link:hover {
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.link:focus-visible {
+  text-decoration: none;
+  outline: 1px solid currentColor;
+}
+
+.decorated-zone {
+  position: relative;
+}
+
+.decorated-zone::before,
+.decorated-zone::after {
+  content: '';
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+  border: 1px solid var(--accent-color);
+}
+
+.decorated-zone::before {
+  inset-block-start: var(--gap-medium);
+  inset-inline-end: var(--gap-medium);
+  border-block-end: none;
+  border-inline-start: none;
+}
+
+.decorated-zone::after {
+  inset-block-end: var(--gap-medium);
+  inset-inline-start: var(--gap-medium);
+  border-block-start: none;
+  border-inline-end: none;
+}
+
+/* Шапка */
+
+.header {
+  min-block-size: 668px;
+  block-size: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 75px var(--gap-medium) var(--gap-medium);
+}
+
+.header__rec {
+  display: inline-block;
+  position: absolute;
+  inset-block-start: var(--gap-medium);
+  inset-inline-end: calc(var(--gap-medium) + 25px + var(--gap-small));
+  color: var(--accent-color);
+  text-transform: uppercase;
+}
+
+.header__rec::after {
+  content: '';
+  display: inline-block;
+  inline-size: 9px;
+  block-size: 9px;
+  margin-inline-start: 10px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  box-shadow: 0 0 4px 2px var(--accent-color);
+  vertical-align: middle;
+}
+
+.header__theme-menu {
+  justify-self: end;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-small);
+}
+
+.header__theme-menu-button {
+  padding: 4px 13px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  text-transform: lowercase;
+  cursor: pointer;
+}
+
+.header__theme-menu-button:hover {
+  border-color: var(--hover-border-color);
+}
+
+.header__theme-menu-button:focus-visible {
+  border-block-end-color: currentColor;
+}
+
+.header__theme-menu-button_active {
+  border-color: currentColor;
+  pointer-events: none;
+}
+
+.header__title {
+  align-self: center;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 1;
+  color: var(--title-color);
+  text-shadow: 4px 4px 0 var(--accent-color);
+}
+
+.header__description {
+  justify-self: start;
+  align-self: end;
+  max-inline-size: 355px;
+  margin-block-end: 80px;
+  font-weight: bold;
+}
+
+/* Основной контент */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-large);
+  padding: 0 var(--gap-medium) var(--gap-large);
+  background-color: var(--bg-color);
+}
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-medium);
+}
+
+.content-section__title {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.content-section__list,
+.content-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-medium);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-small);
+}
+
+.card__title {
+  font-weight: normal;
+}
+
+.card__title_type_bold {
+  font-weight: bold;
+}
+
+/* Галерея */
+
+.gallery {
+  display: grid;
+  gap: var(--gap-medium);
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap-small);
+}
+
+.gallery__image {
+  display: block;
+  inline-size: 100%;
+  block-size: 260px;
+  object-fit: cover;
+}
+
+/* Подвал */
+
+.footer {
+  min-block-size: 668px;
+  block-size: 100vh;
+  display: grid;
+  place-items: center;
+  padding: var(--gap-medium);
+  background-color: var(--bg-color);
+}
+
+.footer__title {
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 1;
+  color: var(--title-color);
+  text-shadow: 4px 4px 0 var(--accent-color);
+}
+
+/* Планшет */
+
+@media (min-width: 768px) {
+  .header {
+    grid-template-columns: 1fr 1fr;
+    padding: var(--gap-large);
+  }
+
+  .header__theme-menu {
+    grid-column: 1 / -1;
+  }
+
+  .header__title {
+    grid-column: 1 / -1;
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .header__description {
+    grid-column: 2 / 3;
+    justify-self: end;
+    text-align: end;
+    max-inline-size: 364px;
+  }
+
+  .content {
+    padding: 0 var(--gap-medium) var(--gap-large);
+    gap: 80px;
+  }
+
+  .content-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: var(--gap-large);
+  }
+
+  .content-section_layout_columns .content-section__title,
+  .content-section_layout_columns .content-section__list {
+    grid-column: 1 / -1;
+  }
+
+  .content-section_layout_columns .content-section__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery__grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 26vw 33.7vw 42.9vw;
+    gap: var(--gap-medium);
+  }
+
+  .gallery__image {
+    block-size: 100%;
+  }
+
+  .gallery__image:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+  }
+
+  .gallery__image:nth-child(2) {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+  }
+
+  .gallery__image:nth-child(3) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+  }
+
+  .gallery__image:nth-child(4) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  .gallery__image:nth-child(5) {
+    grid-column: 2 / 4;
+    grid-row: 3 / 4;
+  }
+
+  .footer__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+}
+
+/* Десктоп */
+
+@media (min-width: 1024px) {
+  .header__theme-menu-list {
+    flex-direction: row;
+  }
+}
